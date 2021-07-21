@@ -1,3 +1,4 @@
+import { response } from "express";
 import { User } from "../../model/User";
 import { IUsersRepository, ICreateUserDTO } from "../IUsersRepository";
 
@@ -20,6 +21,19 @@ class UsersRepository implements IUsersRepository {
 
   create({ name, email }: ICreateUserDTO): User {
     // Complete aqui
+    const user = new User();
+    Object.assign(user, {
+      name,
+      email,
+      admin: false,
+      created_at: new Date(),
+      updated_at: new Date()
+    }
+
+    )
+
+    this.users.push(user)
+    return user;
   }
 
   findById(id: string): User | undefined {
@@ -36,6 +50,7 @@ class UsersRepository implements IUsersRepository {
 
   list(): User[] {
     // Complete aqui
+    return this.users;
   }
 }
 
