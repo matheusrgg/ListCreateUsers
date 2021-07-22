@@ -18,7 +18,7 @@ class CreateUserUseCase {
       throw new Error("message:user already exists")
     }
     const user = this.usersRepository.create({ name, email })
-    console.log(user)
+    console.log("usuário criado", user)
     return user;
 
   }

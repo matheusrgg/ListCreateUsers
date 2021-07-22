@@ -18,6 +18,7 @@ class ListAllUsersUseCase {
       throw new Error("User is not administrator");
     }
     const allUsers = this.usersRepository.list();
+    console.log("all users", allUsers)
     return allUsers;
   }
 }
